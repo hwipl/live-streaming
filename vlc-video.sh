@@ -10,4 +10,7 @@ STREAM_DEST_PORT=5004
 OUTPUT_TARGET=/dev/null
 OUTPUT=:sout=#transcode\{vcodec=h264,venc=x264\{preset=ultrafast,tune=zerolatency,intra-refresh,lookahead=10,keyint=15\},fps=$FPS,scale=auto,acodec=none,scodec=none,height=$OUTPUT_HEIGHT\}:rtp\{dst=$STREAM_DEST_IP,port=$STREAM_DEST_PORT,mux=ts,sdp=sap,name=$STREAM_NAME\}
 
+echo "Starting stream to $STREAM_DEST_IP:$STREAM_DEST_PORT."
+echo "Clients can receive the stream, e.g., with:"
+echo "cvlc rtp://@$STREAM_DEST_IP:$STREAM_DEST_PORT"
 $CMD $INPUT $OUTPUT :sout-keep 2> $OUTPUT_TARGET
