@@ -8,8 +8,10 @@ INPUT_SIZE=3840x2160
 OUTPUT_SIZE=1280x720
 THREADS=0
 STREAM_DEST=224.10.8.1:5004
+OUTPUT_TARGET=/dev/null
 
 $CMD -f $FORMAT -s $INPUT_SIZE -framerate $FPS -i $DISPLAY \
 	-vcodec libx264 -preset ultrafast -tune zerolatency \
 	-s $OUTPUT_SIZE -threads $THREADS \
-	-f mpegts udp://$STREAM_DEST
+	-f mpegts udp://$STREAM_DEST \
+	2> $OUTPUT_TARGET
