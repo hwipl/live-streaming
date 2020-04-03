@@ -10,9 +10,20 @@ THREADS=0
 STREAM_DEST=224.10.8.1:5004
 OUTPUT_TARGET=/dev/null
 
-echo "Starting stream to $STREAM_DEST_IP:$STREAM_DEST_PORT."
+echo "Starting stream:"
+echo ""
+echo "  display:     $DISPLAY"
+echo "  format:      $FORMAT"
+echo "  input size:  $INPUT_SIZE"
+echo "  output size: $OUTPUT_SIZE"
+echo "  fps:         $FPS"
+echo "  destination: $STREAM_DEST"
+echo "  stderr to:   $OUTPUT_TARGET"
+echo ""
 echo "Clients can receive the stream, e.g., with:"
 echo "ffplay udp://$STREAM_DEST"
+echo ""
+
 $CMD -f $FORMAT -s $INPUT_SIZE -framerate $FPS -i $DISPLAY \
 	-vcodec libx264 -preset ultrafast -tune zerolatency \
 	-s $OUTPUT_SIZE -threads $THREADS \
