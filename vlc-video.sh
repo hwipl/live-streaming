@@ -1,6 +1,8 @@
 #!/bin/sh
 
 CMD=/usr/bin/cvlc
+# If you need to specify the multicast interface, uncomment next line
+#CMD=/usr/bin/cvlc --miface eth0
 INPUT=v4l2:///dev/video0
 FPS=5
 OUTPUT_HEIGHT=420
